@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { APP_NAME, ROUTES } from "@/lib/constants";
 import { isCandidateProfileComplete, readCandidateProfile } from "@/lib/candidateProfile";
 import ThemeToggle from "./ThemeToggle";
+import Sidebar from "./Sidebar";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -61,6 +62,7 @@ export default function Navbar() {
         )}
         <div className="flex items-center gap-2">
           <ThemeToggle />
+          <Sidebar />
           <Link href={candidateComplete ? "/setup" : "/candidate"} className="hidden items-center gap-1 rounded-full bg-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-400 sm:flex">
             {candidateComplete ? "Continue" : "Start"} <ChevronRight className="size-4" />
           </Link>

@@ -9,6 +9,7 @@ import Timer from "@/components/interview/Timer";
 import PageContainer from "@/components/shared/PageContainer";
 import CandidateGate from "@/components/shared/CandidateGate";
 import PanelSkeleton from "@/components/shared/PanelSkeleton";
+import AttentionWarningModal from "@/components/interview/AttentionWarningModal";
 import { useInterview } from "@/hooks/useInterview";
 
 const AIAvatar = dynamic(() => import("@/components/interview/AIAvatar"), {
@@ -162,11 +163,10 @@ export default function InterviewPage() {
             <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-sm text-emerald-300">Confidence 87%</span>
           </div>
         </div>
-        {attentionWarning && (
-          <div className="mb-5 rounded-2xl border border-amber-400/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
-            Attention warning: tab switch or page leave was detected during the interview.
-          </div>
-        )}
+        <AttentionWarningModal
+          open={attentionWarning}
+          onClose={() => setAttentionWarning(false)}
+        />
         <div className="grid gap-5 lg:grid-cols-2">
           <AIAvatar />
           <CandidatePreview />
